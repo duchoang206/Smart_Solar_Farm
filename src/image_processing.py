@@ -9,7 +9,7 @@ from glob import glob
 
 # --- 1. THIẾT LẬP THƯ MỤC LÀM VIỆC ---
 
-found_folders = glob("*.SAFE")
+found_folders = glob("../data/raw/*.SAFE")
 SAFE_NAME = found_folders[0]
 def get_band(color_code):
     search_pattern = os.path.join(SAFE_NAME, "**", f"*{color_code}*.jp2")
@@ -45,7 +45,7 @@ if red is not None:
     print(f" Đã chia bản đồ thành {num_lots} lô đất.")
 
     # --- 5. XUẤT EXCEL ---
-    excel_filename = "Ket_Qua_Phan_Tich.xlsx"
+    excel_filename = "../data/processed/Ket_Qua_Phan_Tich.xlsx"
     print(f" Đang xuất dữ liệu ra file Excel: {excel_filename}")
     
     data_list = []

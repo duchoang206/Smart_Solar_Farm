@@ -18,4 +18,4 @@ Dự án ứng dụng Computer Vision và Operations Research để tự động
 3. Chạy tối ưu hóa: `python src/optimization.py`
 
 ## 👨‍💻 Tác giả
-- **Hoàng Xuân Đức** (MSSV: 22000086) - Sinh viên VNU-HUS.
+- **Hoàng Xuân Đức**  Sinh viên VNU-HUS.

@@ -8,7 +8,7 @@
 ## 📖 Tổng quan Dự án
 **Smart Solar Farm** là một giải pháp tự động hóa quy trình khảo sát địa điểm đầu tư năng lượng tái tạo. Dự án thay thế các phương pháp khảo sát thủ công tốn kém bằng cách kết hợp dữ liệu ảnh vệ tinh đa phổ và các mô hình toán học tối ưu.
 
-Mục tiêu cốt lõi là **tối đa hóa sản lượng điện năng** thu được dựa trên một mức ngân sách giới hạn, đồng thời tự động loại bỏ các khu vực địa hình không phù hợp (như mặt nước).
+Mục tiêu cốt lõi là **tối đa hóa sản lượng điện năng** thu được dựa trên một mức ngân sách giới hạn, đồng thời tự động loại bỏ các khu vực địa hình không phù hợp (như mặt nước)
 
 ---
 

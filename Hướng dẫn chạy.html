@@ -4,6 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hướng Dẫn Toàn Diện Pipeline Smart Solar Farm</title>
+    
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
     <style>
         :root {
             --primary-color: #1b4332;
@@ -149,19 +161,12 @@
             background-color: #f9fbf9;
         }
         
-        .math {
-            font-family: 'Times New Roman', serif;
-            font-style: italic;
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-
         .math-display {
             text-align: center;
             margin: 20px 0;
-            font-size: 12pt;
+            font-size: 13pt;
             background-color: #fbfcfb;
-            padding: 10px;
+            padding: 15px;
             border-radius: 4px;
             border: 1px dashed var(--accent-color);
             text-indent: 0;
@@ -200,7 +205,7 @@
 
     <div class="container">
         <div class="main-header">
-            <h1>Hướng Dẫn Vận Hành Hệ Thống Smart Solar Farm</h1>
+            <h1>Cẩm Nang Hướng Dẫn Vận Hành Hệ Thống Smart Solar Farm</h1>
             <p>Quy trình triển khai tự động hóa End-to-End Pipeline từ ảnh vệ tinh đến sơ đồ tối ưu công nghiệp</p>
         </div>
 
@@ -275,7 +280,7 @@ venv\Scripts\activate     # Trên hệ điều hành Windows</pre>
         <pre>pip install numpy pandas opencv-python scikit-image matplotlib gurobipy</pre>
 
         <h3>2.3. Cài đặt License bản quyền cho Gurobi Optimizer</h3>
-        <p>Để giải bài toán quy hoạch tổ hợp nhị phân quy mô lớn một cách chính xác tuyệt đối, hệ thống bắt buộc phải gọi đến thư viện thuật toán của Gurobi. Đức hãy đăng ký một tài khoản Academic (miễn phí cho sinh viên ĐHQGHN) trên trang chủ gurobi.com, nhận chuỗi mã key và chạy lệnh kích hoạt trên máy trạm:</p>
+        <p>Để giải bài toán quy hoạch tổ hợp nhị phân quy mô lớn một cách chính xác tuyệt đối, hệ thống bắt buộc phải gọi đến thư viện thuật toán của Gurobi. Hãy đăng ký một tài khoản Academic trên trang chủ gurobi.com, nhận chuỗi mã key và chạy lệnh kích hoạt trên máy trạm:</p>
         <pre>grbgetkey xxxx-xxxx-xxxx-xxxx-xxxx</pre>
 
         <h2>3. Bước 3: Chạy luồng Pipeline tự động hóa End-to-End</h2>
@@ -285,12 +290,20 @@ venv\Scripts\activate     # Trên hệ điều hành Windows</pre>
         <p class="no-indent">Chạy lệnh thực thi tệp tin cấu hình ảnh vệ tinh:</p>
         <pre>python src/preprocessing.py</pre>
         <p>Lúc này, mã nguồn Python sẽ tự động đọc các file ảnh phổ thô trong thư mục <code>data/</code> và thực hiện liên tiếp các phép toán ma trận ở cấp độ pixel:</p>
-        <div class="math-display">
-            Chỉ số thực vật: <span class="math">NDVI = \frac{\text{Band 8} - \text{Band 4}}{\text{Band 8} + \text{Band 4}}</span>
-        </div>
-        <div class="math-display">
-            Chỉ số mặt nước: <span class="math">NDWI = \frac{\text{Band 3} - \text{Band 8}}{\text{Band 3} + \text{Band 8}}</span>
-        </div>
+        
+        <ul>
+            <li>Tính toán chỉ số thực vật biến đổi chuẩn hóa:
+                <div class="math-display">
+                    $$NDVI = \frac{\text{Band 8} - \text{Band 4}}{\text{Band 8} + \text{Band 4}}$$
+                </div>
+            </li>
+            <li>Tính toán chỉ số mặt nước biến đổi chuẩn hóa:
+                <div class="math-display">
+                    $$NDWI = \frac{\text{Band 3} - \text{Band 8}}{\text{Band 3} + \text{Band 8}}$$
+                </div>
+            </li>
+        </ul>
+        
         <p>Sau đó, thuật toán <strong>SLIC Super-Pixel</strong> tiến hành gom cụm hàng triệu pixel rời rạc ban đầu thành $N = 300$ lô đất tự nhiên có ranh giới đồng nhất đặc trưng phủ, tự động tính toán ra Diện tích, Chi phí đầu tư ($C_i$) và Sản lượng dự kiến ($E_i$) cho từng lô đất.</p>
 
         <h3>3.2. Thực thi Mô hình toán Quy hoạch nguyên đa ràng buộc</h3>
@@ -307,7 +320,7 @@ venv\Scripts\activate     # Trên hệ điều hành Windows</pre>
 
         <div class="callout-box info-box">
             <div class="callout-box-title">🎯 TIÊU CHUẨN KIỂM TRA BẢN ĐỒ ĐẦU RA:</div>
-            Đức hãy mở file ảnh đồ họa <code>project_map_output.png</code> lên để nghiệm thu công việc. Bản đồ đạt chuẩn phải thể hiện rõ các vùng đầm lầy, mặt nước được bao phủ màu xanh thẫm; các vùng rừng rậm chi phí cao bị loại bỏ giữ nguyên nền ảnh vệ tinh viễn thám; và toàn bộ hệ thống các lô đất trống thoáng nắng được thuật toán phê duyệt đầu tư sẽ được tô phủ màu xanh lá cây đậm tươi sáng, bao khớp vừa vặn với biên giới hạn địa hình.
+            Hãy mở file ảnh đồ họa <code>project_map_output.png</code> lên để nghiệm thu công việc. Bản đồ đạt chuẩn phải thể hiện rõ các vùng đầm lầy, mặt nước được bao phủ màu xanh thẫm; các vùng rừng rậm chi phí cao bị loại bỏ giữ nguyên nền ảnh vệ tinh viễn thám; và toàn bộ hệ thống các lô đất trống thoáng nắng được thuật toán phê duyệt đầu tư sẽ được tô phủ màu xanh lá cây đậm tươi sáng, bao khớp vừa vặn với biên giới hạn địa hình.
         </div>
     </div>
 

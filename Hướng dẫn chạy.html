@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hướng Dẫn Toàn Diện Pipeline Smart Solar Farm</title>
+    <style>
+        :root {
+            --primary-color: #1b4332;
+            --secondary-color: #2d6a4f;
+            --accent-color: #52b788;
+            --light-bg: #f4f6f8;
+            --text-color: #2c3e50;
+            --code-color: #ba181b;
+            --border-color: #e1e4e6;
+        }
+        
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 11.5pt;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #ffffff;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .main-header {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 40px 30px;
+            border-bottom: 5px solid var(--accent-color);
+            border-radius: 8px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .main-header h1 {
+            font-size: 24pt;
+            margin: 0 0 10px 0;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+
+        .main-header p {
+            font-size: 12pt;
+            margin: 0;
+            color: #d8f3dc;
+            font-style: italic;
+        }
+        
+        h2 {
+            font-size: 16pt;
+            color: var(--primary-color);
+            border-left: 5px solid var(--accent-color);
+            padding-left: 12px;
+            margin-top: 35px;
+            margin-bottom: 15px;
+        }
+
+        h3 {
+            font-size: 13pt;
+            color: var(--secondary-color);
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        p {
+            margin-top: 0;
+            margin-bottom: 12px;
+            text-align: justify;
+            text-indent: 1.27cm;
+        }
+
+        .no-indent {
+            text-indent: 0;
+        }
+        
+        ul, ol {
+            margin-top: 0;
+            margin-bottom: 15px;
+            padding-left: 30px;
+        }
+
+        li {
+            margin-bottom: 8px;
+            text-align: justify;
+        }
+        
+        pre {
+            background-color: var(--light-bg);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--secondary-color);
+            padding: 15px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 10pt;
+            line-height: 1.5;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: var(--light-bg);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 10.5pt;
+            color: var(--code-color);
+            border: 1px solid #e1e4e6;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            margin-bottom: 25px;
+            font-size: 11pt;
+        }
+
+        th, td {
+            border: 1px solid #d3d3d3;
+            padding: 10px 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background-color: var(--secondary-color);
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9fbf9;
+        }
+        
+        .math {
+            font-family: 'Times New Roman', serif;
+            font-style: italic;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .math-display {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 12pt;
+            background-color: #fbfcfb;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px dashed var(--accent-color);
+            text-indent: 0;
+        }
+        
+        .callout-box {
+            background-color: #e8f5e9;
+            border: 1px solid #c8e6c9;
+            border-left: 5px solid #2e7d32;
+            padding: 15px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+
+        .callout-box-title {
+            font-weight: bold;
+            color: #1b5e20;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            font-size: 10.5pt;
+        }
+
+        .info-box {
+            background-color: #e3f2fd;
+            border: 1px solid #bbdefb;
+            border-left: 5px solid #1e88e5;
+        }
+
+        .info-box .callout-box-title {
+            color: #0d47a1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="main-header">
+            <h1>Hướng Dẫn Vận Hành Hệ Thống Smart Solar Farm</h1>
+            <p>Quy trình triển khai tự động hóa End-to-End Pipeline từ ảnh vệ tinh đến sơ đồ tối ưu công nghiệp</p>
+        </div>
+
+        <p class="no-indent">Tài liệu này được thiết kế nhằm cung cấp một lộ trình chi tiết, khép kín từ đầu đến cuối cho hệ thống <strong>Smart Solar Farm Site Selection</strong>. Người vận hành chỉ cần bám sát các bước chỉ dẫn dưới đây để thực hiện từ khâu trích xuất viễn thám thực địa cho đến khâu chạy mô hình toán quy hoạch nguyên và biên dịch sơ đồ vị trí nhà máy.</p>
+
+        <h2>1. Bước 1: Khai thác và Tải dữ liệu ảnh vệ tinh đa phổ (Copernicus - ESA)</h2>
+        <p>Để có mô hình thực địa chính xác, dữ liệu đầu vào bắt buộc phải lấy từ nguồn ảnh vệ tinh đa phổ Sentinel-2 được hiệu chỉnh khí quyển.</p>
+        
+        <h3>1.1. Cấu hình bộ lọc tìm kiếm trên cổng viễn thám</h3>
+        <ul>
+            <li>Truy cập vào các nền tảng cung cấp dữ liệu mở của ESA (Ví dụ: <strong>Copernicus Browser</strong> hoặc <strong>USGS EarthExplorer</strong>) và tạo tài khoản đăng nhập.</li>
+            <li>Sử dụng thanh công cụ tìm kiếm hoặc công cụ vẽ vùng đa giác hình học (AOI - Area of Interest) để định vị chính xác khu vực địa lý cấp huyện/tỉnh mà bạn muốn quy hoạch điện mặt trời.</li>
+            <li>Tại mục cấu hình cảm biến, tích chọn vệ tinh <code>Sentinel-2</code>. Ở phần bộ lọc chất lượng ảnh, chọn mức độ xử lý dữ liệu là <code>Level-2A</code> (đây là ảnh BOA đã được khử nhiễu bức xạ và mây mù khí quyển).</li>
+            <li>Thiết lập thông số tỷ lệ mây che phủ (Cloud Cover) ở mức ngặt nghèo: <code>&lt; 5%</code> để tránh sai số khi tính toán chỉ số quang phổ.</li>
+        </ul>
+
+        <h3>1.2. Trích xuất các kênh sóng phổ mục tiêu</h3>
+        <p>Sau khi hệ thống lọc ra tệp ảnh ưng ý (được lưu dưới dạng tệp nén cấu trúc <code>.SAFE</code> hoặc <code>.TIFF</code>), tiến hành giải nén và truy cập vào thư mục chứa dữ liệu ảnh gốc có độ phân giải không gian $10\text{m} \times 10\text{m}$. Hãy copy và trích xuất đúng 3 kênh sóng (Bands) sau đây:</p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 25%;">Băng tần vệ tinh</th>
+                    <th style="width: 25%;">Bước sóng trung tâm</th>
+                    <th style="width: 20%;">Độ phân giải</th>
+                    <th style="width: 30%;">Chức năng hệ thống</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Band 3 (Green)</strong></td>
+                    <td>560 nm</td>
+                    <td>10 m / pixel</td>
+                    <td>Nhận diện đặc trưng mặt nước nông, dùng tính toán NDWI.</td>
+                </tr>
+                <tr>
+                    <td><strong>Band 4 (Red)</strong></td>
+                    <td>665 nm</td>
+                    <td>10 m / pixel</td>
+                    <td>Bị hấp thụ bởi diệp lục, dùng làm hàm phạt chi phí qua NDVI.</td>
+                </tr>
+                <tr>
+                    <td><strong>Band 8 (NIR)</strong></td>
+                    <td>842 nm</td>
+                    <td>10 m / pixel</td>
+                    <td>Phản xạ cực mạnh từ sinh khối cây xanh, dùng tính NDVI/NDWI.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="callout-box">
+            <div class="callout-box-title">⚠️ QUY TẮC ĐỒNG BỘ THƯ MỤC:</div>
+            Tạo một thư mục tên là <code>data/</code> ngay tại thư mục gốc của dự án. Đổi tên 3 tệp ảnh viễn thám vừa tải về lần lượt thành: <code>sentinel2_b3.tif</code>, <code>sentinel2_b4.tif</code>, và <code>sentinel2_b8.tif</code> rồi chuyển tất cả vào thư mục <code>data/</code> đó.
+        </div>
+
+        <h2>2. Bước 2: Thiết lập môi trường lập trình và kích hoạt bản quyền Solver</h2>
+        <p>Hệ thống vận hành trên nền tảng ngôn ngữ Python 3.10, kết hợp các thư viện xử lý ma trận ảnh và lõi tối ưu hóa Gurobi.</p>
+
+        <h3>2.1. Khởi tạo không gian ảo cô lập (Virtual Environment)</h3>
+        <p class="no-indent">Mở terminal máy tính lên và thực thi các khối lệnh sau để tạo môi trường sạch, tránh xung đột thư viện:</p>
+        <pre># Cách 1: Khởi tạo thông qua Anaconda
+conda create -n farm_env python=3.10 -y
+conda activate farm_env
+
+# Cách 2: Khởi tạo thông qua thư viện venv mặc định của Python
+python -m venv venv
+source venv/bin/activate  # Trên Linux hoặc macOS
+venv\Scripts\activate     # Trên hệ điều hành Windows</pre>
+
+        <h3>2.2. Cài đặt các gói thư viện tính toán viễn thám và lõi tối ưu</h3>
+        <p class="no-indent">Thực thi lệnh pip để cài đặt tự động toàn bộ môi trường phụ thuộc của dự án:</p>
+        <pre>pip install numpy pandas opencv-python scikit-image matplotlib gurobipy</pre>
+
+        <h3>2.3. Cài đặt License bản quyền cho Gurobi Optimizer</h3>
+        <p>Để giải bài toán quy hoạch tổ hợp nhị phân quy mô lớn một cách chính xác tuyệt đối, hệ thống bắt buộc phải gọi đến thư viện thuật toán của Gurobi. Đức hãy đăng ký một tài khoản Academic (miễn phí cho sinh viên ĐHQGHN) trên trang chủ gurobi.com, nhận chuỗi mã key và chạy lệnh kích hoạt trên máy trạm:</p>
+        <pre>grbgetkey xxxx-xxxx-xxxx-xxxx-xxxx</pre>
+
+        <h2>3. Bước 3: Chạy luồng Pipeline tự động hóa End-to-End</h2>
+        <p>Dự án được cấu trúc thành các module xử lý tuần tự, người vận hành kích hoạt luồng xử lý thông qua việc thực thi các file Python.</p>
+
+        <h3>3.1. Thực thi Module tiền xử lý ảnh và Phân đoạn lô đất Super-Pixel</h3>
+        <p class="no-indent">Chạy lệnh thực thi tệp tin cấu hình ảnh vệ tinh:</p>
+        <pre>python src/preprocessing.py</pre>
+        <p>Lúc này, mã nguồn Python sẽ tự động đọc các file ảnh phổ thô trong thư mục <code>data/</code> và thực hiện liên tiếp các phép toán ma trận ở cấp độ pixel:</p>
+        <div class="math-display">
+            Chỉ số thực vật: <span class="math">NDVI = \frac{\text{Band 8} - \text{Band 4}}{\text{Band 8} + \text{Band 4}}</span>
+        </div>
+        <div class="math-display">
+            Chỉ số mặt nước: <span class="math">NDWI = \frac{\text{Band 3} - \text{Band 8}}{\text{Band 3} + \text{Band 8}}</span>
+        </div>
+        <p>Sau đó, thuật toán <strong>SLIC Super-Pixel</strong> tiến hành gom cụm hàng triệu pixel rời rạc ban đầu thành $N = 300$ lô đất tự nhiên có ranh giới đồng nhất đặc trưng phủ, tự động tính toán ra Diện tích, Chi phí đầu tư ($C_i$) và Sản lượng dự kiến ($E_i$) cho từng lô đất.</p>
+
+        <h3>3.2. Thực thi Mô hình toán Quy hoạch nguyên đa ràng buộc</h3>
+        <p class="no-indent">Kích hoạt lõi tối ưu hóa Gurobi bằng lệnh:</p>
+        <pre>python src/optimization.py</pre>
+        <p>Thuật toán Nhánh và Cận (Branch and Bound) của hệ thống sẽ tự động quét bản đồ lô đất, kích hoạt bộ lọc loại bỏ toàn bộ các lô đất có chỉ số $NDWI > 0$ (ràng buộc cứng mặt nước), kiểm soát biến nhị phân $x_i \in \{0, 1\}$ và giải hệ phương trình tối đa hóa năng lượng thu hoạch dưới điều kiện biên trần ngân sách $W$. Tiến trình cắt tỉa nhánh vô nghiệm giúp bộ giải tìm ra cấu hình đầu tư hoàn hảo chỉ trong thời gian chưa tới 0.5 giây.</p>
+
+        <h2>4. Bước 4: Kiểm tra và Nghiệm thu Bản đồ kết quả dự án</h2>
+        <p>Khi luồng xử lý kết thúc thành công với độ sai số hội tụ lý tưởng (<code>MIPGap = 0.0%</code>), hệ thống tự động xuất ra hai tệp tin thành phẩm trong thư mục gốc:</p>
+        <ol>
+            <li><strong>Bảng tọa độ khảo sát thực địa (<code>selected_sites.csv</code>):</strong> File bảng biểu ghi nhận chính xác danh sách ID các lô đất được phê duyệt xây dựng, diện tích chi tiết, mức giải ngân tài chính và tọa độ tâm hình học để kỹ sư mang thiết bị định vị ra thực địa.</li>
+            <li><strong>Sơ đồ phân vùng vị trí nhà máy mặt trời (<code>project_map_output.png</code>):</strong> Tấm bản đồ trực quan hóa đồ họa cuối cùng của dự án.</li>
+        </ol>
+
+        <div class="callout-box info-box">
+            <div class="callout-box-title">🎯 TIÊU CHUẨN KIỂM TRA BẢN ĐỒ ĐẦU RA:</div>
+            Đức hãy mở file ảnh đồ họa <code>project_map_output.png</code> lên để nghiệm thu công việc. Bản đồ đạt chuẩn phải thể hiện rõ các vùng đầm lầy, mặt nước được bao phủ màu xanh thẫm; các vùng rừng rậm chi phí cao bị loại bỏ giữ nguyên nền ảnh vệ tinh viễn thám; và toàn bộ hệ thống các lô đất trống thoáng nắng được thuật toán phê duyệt đầu tư sẽ được tô phủ màu xanh lá cây đậm tươi sáng, bao khớp vừa vặn với biên giới hạn địa hình.
+        </div>
+    </div>
+
+</body>
+</html>
